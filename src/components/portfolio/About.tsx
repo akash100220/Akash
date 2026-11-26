@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PROFILE } from "@/lib/data";
 import { prefersReducedMotion } from "@/lib/hooks";
+import { withBase } from "@/lib/utils";
 
 // Deterministic barcode widths from the name
 const BARS = Array.from(PROFILE.name.replace(/\s/g, "") + "FSD")
@@ -80,8 +81,14 @@ function IdCard() {
               <span className="idcard-hole" aria-hidden />
             </div>
             <div className="idcard-photo">
-              <div className="idcard-photo-clip idcard-monogram">
-                <span aria-hidden>{PROFILE.initials}</span>
+              <div className="idcard-photo-clip">
+                <img
+                  src={withBase("akash.png")}
+                  alt={`${PROFILE.name} — ${PROFILE.role}`}
+                  width={384}
+                  height={384}
+                  loading="lazy"
+                />
               </div>
             </div>
             <div className="mt-4 text-center">
